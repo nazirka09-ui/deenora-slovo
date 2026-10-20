@@ -1,0 +1,20 @@
+{
+  "id": "/deenora-slovo/",
+  "name": "Deenora",
+  "short_name": "Deenora",
+  "lang": "ru",
+  "description": "Коран, намаз, задачи и обучение",
+  "start_url": "/deenora-slovo/",
+  "scope": "/deenora-slovo/",
+  "display": "standalone",
+  "background_color": "#0F281F",
+  "theme_color": "#0F281F",
+  "icons": [
+    {
+      "src": "/deenora-slovo/app-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
