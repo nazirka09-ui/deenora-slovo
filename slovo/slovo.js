@@ -120,6 +120,16 @@
     localStorage.setItem(SOUND_KEY, JSON.stringify({ id, volume }));
   }
 
+  function playThroughSilentSwitch() {
+    const session = navigator.audioSession;
+    if (!session || session.type === "playback") return;
+    try {
+      session.type = "playback";
+    } catch {
+      // This browser does not accept the playback session type.
+    }
+  }
+
   class Bed {
     constructor() {
       this.ctx = null;
@@ -130,6 +140,7 @@
       this.volume = 0.4;
     }
     ensure() {
+      playThroughSilentSwitch();
       if (this.ctx) return;
       const ctx = new AudioContext();
       const master = ctx.createGain();
@@ -152,6 +163,7 @@
       this.layers = [];
     }
     async play(id) {
+      playThroughSilentSwitch();
       this.ensure();
       if (this.ctx.state === "suspended") await this.ctx.resume();
       this.stop();
